@@ -3,14 +3,29 @@
 
 **Source:** "The Ultimate Guide to Social Intelligence — Most People Are Level 1"
 **Transform:** each of the source's nine Strata becomes one ~60s vertical short, applied to sport.
-**Format:** 9:16, self-recorded, ~140–155 words each.
+**Format:** 9:16. Target 60–90s, and up to 2 minutes where the material earns it.
+Length is not a constraint to hit — it's a ceiling. Don't pad, don't amputate.
 
 **House rule, taken from the source's own Clarity section:** short sentences, no jargon,
 one idea per episode, researchers named only when the name earns trust. Never try to sound
 smart — make the listener feel smart for getting it.
 
-**Recurring shape:** name the belief most athletes hold → show why it's wrong → give a
-physical action, not a mindset → land it flat.
+**Recurring shape:** series cold open → episode setup line → name the belief most athletes
+hold → show why it's wrong → give a physical action, not a mindset → land it flat.
+
+---
+
+## SERIES COLD OPEN
+*Runs at the top of every episode. Same words, same footage, every time — it's the
+signature. ~26s.*
+
+> There's a kind of intelligence nobody ever tested you for.
+> Not your IQ. Not your numbers. Not your times.
+> It's whether you can read people. And whether they can read you.
+> A researcher named Thorndike named it a hundred years ago. Social intelligence.
+> He found raw intellect explains about twenty percent of who actually succeeds.
+> Most athletes never think about the other eighty.
+> This is the invisible game.
 
 | # | Title | Strata | Core idea |
 |---|---|---|---|
@@ -26,6 +41,23 @@ physical action, not a mindset → land it flat.
 
 **Note:** `../level-one-athlete.md` was the first pass at this material and is now superseded —
 its content lives in Episodes 1 and 3.
+
+## PRODUCED
+
+Narration voice is fixed across the series for continuity (Cillian, ElevenLabs via
+text2speech_v2). Footage is MiniMax H3 Max, 768x1344, 8s shots. No music bed: the
+generation tool provides speech only and forbids using its music model for standalone
+audio, so a licensed instrumental has to be laid under these by hand. Mixes are
+normalised to -16 LUFS / -1.5 dBTP and leave room for one.
+
+| Ep | Version | Length | Link |
+|---|---|---|---|
+| 9 | v2 (with cold open) — current | 86.5s | https://d2ol7oe51mr4n9.cloudfront.net/user_2yAUxnXAFoiK8f5HAU8aI7XdD8t/d38687c2-e64e-4d73-8c07-a3f7bcdd9364.mp4 |
+| 9 | v1 (no cold open) — superseded | 51.5s | https://d2ol7oe51mr4n9.cloudfront.net/user_2yAUxnXAFoiK8f5HAU8aI7XdD8t/79846e54-01b8-4ccc-8a39-ac31d60912bc.mp4 |
+
+Cold open footage is reusable across all nine episodes: athlete alone at the edge of a
+session, measurement close-ups, two players sizing each other up, someone reading a
+changing room. Re-cut it once and every episode changes, so treat it as locked.
 
 ---
 
@@ -138,6 +170,13 @@ its content lives in Episodes 1 and 3.
 > Don't argue. Wait.
 
 ## EP 9 — WHY THIS IS THE EDGE NOW
+
+**Setup line** *(after the cold open)*
+
+> Part nine. Why this is the edge now.
+> Because everything else you were told to work on just stopped being rare.
+
+**Body**
 
 > Everyone has the same training plan now.
 > Same nutrition. Same sleep data. Same analytics. Same video on every opponent.
