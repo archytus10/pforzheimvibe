@@ -29,8 +29,14 @@ becomes reachable. They want to switch video generation from Higgsfield to
 **fal.ai `minimax/h3-max-turbo/text-to-video`**
 (https://fal.ai/models/minimax/h3-max-turbo/text-to-video).
 
-- Endpoint that was refused under the old policy: `https://queue.fal.run/fal-ai/minimax/h3-max-turbo/text-to-video`,
+- Endpoint: `https://queue.fal.run/fal-ai/minimax/h3-max-turbo/text-to-video`,
   `Authorization: Key <key>`.
+- **Reachability depends on when your container was provisioned.** A container created
+  after the user set Network access to **Full** reaches fal (it answers 401 for missing
+  auth, which is fal talking, not the proxy). A container created before it still gets
+  `403 CONNECT tunnel failed` from the egress proxy no matter what the setting now says —
+  verified from the originating session at 2026-09-14T04:2x UTC, still blocked. If you get
+  403, you are on an old container: start a new session rather than debugging it.
 - **The API key is not in this repo and must not be.** The user supplied one in the previous
   session and said they would rotate it. Ask them for the current key; keep it in the
   scratchpad or an env var, never a committed file.
@@ -62,7 +68,11 @@ and room match. Do the same for every remaining tank shot — generated tank int
 otherwise drift, and they already do not match the user's real facility.
 
 Section 1 (0:00–0:30) is complete with shots 01–04. Shot 05 opens section 2.
-Remaining: shots 06–16, listed in the floating README and the artifact.
+Remaining: shots 06–16.
+
+**The full shot list now lives in `scripts/floating/README.md` under `## SHOT LIST`** — all
+16 shots with timecodes, the tank-interior start-image chain, and the verbatim prompts for
+shots 01–05. It was previously only inside the artifact, which no other session can open.
 
 ---
 
@@ -103,9 +113,11 @@ Episodes 1–8 are written but not produced.
 
 - **Git author must be `archytus10@users.noreply.github.com`.** The account blocks pushes
   that would expose a private email; a real address fails with GH007.
-- **This container cannot fetch the Higgsfield CDN** (`d2ol7oe51mr4n9.cloudfront.net` was
-  403 through the egress proxy), so finished videos cannot be attached in chat — hand the
-  user the URL. Verify files from inside the Higgsfield sandbox instead.
+- **Higgsfield CDN access also depends on the container's age.** Sessions started before
+  the Full-network switch get 403 through the egress proxy on both
+  `d2ol7oe51mr4n9.cloudfront.net` and `d8j0ntlcm91z4.cloudfront.net`, so finished videos
+  can only be handed over as URLs and must be verified from inside the Higgsfield sandbox.
+  A session started after the switch can fetch them directly and attach them in chat.
 - **No music.** Higgsfield's audio tool generates speech only and forbids its music model
   for standalone audio. Mixes are left at -16 LUFS / -1.5 dBTP for a licensed bed to be
   added by hand.

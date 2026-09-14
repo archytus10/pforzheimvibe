@@ -69,6 +69,99 @@ words actually written. ⚠️ marks a section that overruns its slide budget at
 | Slides 14–15: Conclusion | 39 | 15s | 14s | 30s |
 | **Total** | **320** | **126s** | **113s** | **180s** |
 
+## SHOT LIST
+
+**16 shots total.** Production constants, confirmed: **16:9**, **8s per shot** unless a
+length is named, casting **African American college football athletes, late teens to early
+twenties**, practice jersey and pads for field and weight-room shots. No text on screen, no
+logos, no dialogue in any shot — narration is added in post.
+
+**Resolution:** shots 02–05 rendered at **768p (1344x768)**. Shot 01 is the odd one out at
+**2K (2560x1440)** — it was generated before the working resolution was settled. Match 768p
+or higher for the rest; anything above it downscales cleanly in the edit, so the real
+constraint is the aspect ratio and the look, not the pixel count. If the series ends up
+finishing above 768p, shot 01 is already fine and shots 02–05 are the ones to regenerate.
+
+| # | Section | Timecode | In frame | Tank? | Status |
+|---|---|---|---|---|---|
+| 01 | Introduction | 0:00–0:30 | Sled push across indoor turf, hard side light | – | done (2K) |
+| 02 | Introduction | 0:00–0:30 | Weight room, heavy barbell rep, same player | – | done |
+| 03 | Introduction | 0:00–0:30 | The turn: still water, one slow ripple | – | done |
+| 04 | Introduction | 0:00–0:30 | Float room at rest, lid open, cyan-lit water, empty | **yes** | done |
+| 05 | First Float | 0:30–1:00 | Athlete enters the room, towel over shoulder | **yes** | done |
+| 06 | First Float | 0:30–1:00 | Easing back into the salt water, arms going slack | **yes** | to do |
+| 07 | First Float | 0:30–1:00 | Face at rest, water line at the ears | **yes** | to do |
+| 08 | Wallas | 1:00–1:45 | Waveform graphic: fast chatter smoothing out | – | to do |
+| 09 | Wallas | 1:00–1:45 | Film study in a dark room, screen light on the face | – | to do |
+| 10 | Wallas | 1:00–1:45 | Floating weightless, eyes closed | **yes** | to do |
+| 11 | Wallas | 1:00–1:45 | The clean rep executed on the field | – | to do |
+| 12 | Recovery | 1:45–2:30 | Spine and joint overlay, pressure points easing | **yes** | to do |
+| 13 | Recovery | 1:45–2:30 | Shoulders and knees close, one slow exhale | **yes** | to do |
+| 14 | Recovery | 1:45–2:30 | Back to stillness, weightless suspension | **yes** | to do |
+| 15 | Conclusion | 2:30–3:00 | Stepping out, towel, steam, light on skin | **yes** | to do |
+| 16 | Conclusion | 2:30–3:00 | Walking toward the field, gear in hand | – | to do |
+
+Shots 01–04 complete section 1 at 32s against its 30s slide budget. Shot 05 opens section 2.
+
+### Start-image chain — tank interiors
+
+Nine shots are pod or float-room interiors: **04, 05, 06, 07, 10, 12, 13, 14, 15**.
+Generated tank interiors drift badly between prompts, so each one takes **the last frame of
+the previous tank shot as its start image**. Shot 05 was regenerated this way from shot 04
+and the pod and room carried over exactly.
+
+Chain order, each feeding the next:
+
+```
+04 → 05 → 06 → 07 → 10 → 12 → 13 → 14 → 15
+```
+
+Shots 08, 09, 11 and 16 sit between links in the timeline but are not tank interiors, so
+they are generated independently and do not break the chain — 10 still chains from 07.
+
+To extract the frame: `ffmpeg -sseof -0.15 -i <prev>.mp4 -frames:v 1 -q:v 2 last.jpg`,
+then pass it as the generator's start image. Word the prompt to hold the established room
+("this exact float room and this exact white pod ... lighting, pod shape, wall stone and
+candles stay identical to the opening frame") rather than re-describing it from scratch.
+
+**These interiors are invented, not the user's facility.** They were built from an
+AI-generated look reference, so they are internally consistent but will not match the real
+float room. If real photographs of the room exist, use one as the chain's first frame
+instead of shot 04.
+
+### Verbatim prompts, shots 01–05
+
+Copy these rather than paraphrasing — they establish the look the rest of the piece has to
+match. Generated on Higgsfield; shot 01 on `minimax_h3`, the rest on `minimax_h3_max`.
+
+**01 — sled push** *(2K)*
+> Cinematic 16:9 sports documentary b-roll. A young African American college football player in a practice jersey and pads drives a weighted sled across an indoor turf field, low and powerful, legs churning, jaw set, sweat flying. Dramatic side-lit training facility, shafts of hard light through high windows, dust and chalk in the air, deep contrast and rich warm tones. Camera tracks low and alongside him, slight handheld energy. High effort, real strain, no slow motion. No text on screen, no logos, no dialogue. Photoreal, 35mm, shallow depth of field.
+
+**02 — weight room**
+> Cinematic 16:9 sports documentary b-roll. A young African American college football player in a sleeveless practice top grinds out a heavy barbell rep in a college weight room, bar bending slightly, veins and sweat, face straining with total effort. Hard side light through high windows, chalk dust in the air, deep shadows, rich warm tones. Camera close and slightly low, locked with a subtle handheld drift. Real strain, full speed, no slow motion. No text on screen, no logos, no dialogue. Photoreal, 35mm, shallow depth of field.
+
+**03 — the turn to water**
+> Cinematic 16:9 b-roll, the calm turn after intensity. Extreme close-up of a still water surface in near darkness, faint blue light raking across it, a single slow ripple spreading outward and fading to glass. Almost black at the edges of frame, deep teal and cool blue in the light, silky reflections. Camera glides slowly just above the surface, no cuts. Quiet, weightless, meditative. No people, no text on screen, no logos. Photoreal macro, 35mm, shallow depth of field.
+
+**04 — float room at rest** *(first link in the chain)*
+> Cinematic 16:9 spa interior b-roll. A glossy white oval float pod sits at rest in a warm stone treatment room, lid raised open, the shallow salt water inside glowing soft cyan from interior lights. Warm travertine walls, slatted wood, potted bamboo, candles and a low LED strip along the floor, polished stone reflecting the light. Empty room, nobody present, faint steam. Camera drifts slowly toward the open pod. Calm, premium, inviting. No text on screen, no logos, no people. Photoreal, 35mm, shallow depth of field.
+
+**05 — athlete enters** *(current version — start image = last frame of shot 04)*
+> The camera holds on this exact float room and this exact white pod. A young African American college football athlete in swim shorts, towel over one shoulder, walks barefoot into frame and stops beside the open pod, taking it in, then sets the towel down. Lighting, pod shape, wall stone and candles stay identical to the opening frame. Unhurried and calm. No text on screen, no logos, no dialogue. Photoreal, 35mm, shallow depth of field.
+
+**05 — first attempt, superseded** *(text-only, no start image; the pod did not match shot 04 — kept to show what the chain fixes)*
+> Cinematic 16:9 spa interior b-roll. A young African American college football athlete in swim shorts, towel over one shoulder, steps barefoot into a warm stone float room and stops beside the open white float pod, taking it in. Soft cyan glow from the pod water, candles and warm low lighting on travertine walls, polished floor reflections. Unhurried, calm, a little reverent. Camera static in a wide shot from across the room. No text on screen, no logos, no dialogue. Photoreal, 35mm, shallow depth of field.
+
+### Rendered shots
+
+| # | URL |
+|---|---|
+| 01 | https://d8j0ntlcm91z4.cloudfront.net/user_2yAUxnXAFoiK8f5HAU8aI7XdD8t/hf_20260913_155038_d0397703-b1c6-40b0-a7e6-9f11d4ce42b8.mp4 |
+| 02 | https://d8j0ntlcm91z4.cloudfront.net/user_2yAUxnXAFoiK8f5HAU8aI7XdD8t/hf_20260913_165634_14958df6-931f-44ca-a0d3-309c3836d98f.mp4 |
+| 03 | https://d8j0ntlcm91z4.cloudfront.net/user_2yAUxnXAFoiK8f5HAU8aI7XdD8t/hf_20260913_165920_cbd39643-69a1-438a-894e-dac57fc5604b.mp4 |
+| 04 | https://d8j0ntlcm91z4.cloudfront.net/user_2yAUxnXAFoiK8f5HAU8aI7XdD8t/hf_20260913_170554_f67c6d73-9585-4c8c-a149-805426aeead8.mp4 |
+| 05 | https://d8j0ntlcm91z4.cloudfront.net/user_2yAUxnXAFoiK8f5HAU8aI7XdD8t/hf_20260913_171430_153abdad-3443-4439-a04e-093c196ece6b.mp4 |
+
 ## NOTES BEFORE PRODUCTION
 
 - **"The Wallas Paradigm"** is Graham Wallas's four-stage model of the creative process
