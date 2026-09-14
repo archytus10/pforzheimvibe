@@ -90,15 +90,16 @@ finishing above 768p, shot 01 is already fine and shots 02–05 are the ones to 
 | 04 | Introduction | 0:00–0:30 | Float room at rest, lid open, cyan-lit water, empty | **yes** | done |
 | 05 | First Float | 0:30–1:00 | Athlete enters the room, towel over shoulder | **yes** | done |
 | 06 | First Float | 0:30–1:00 | Easing back into the salt water, arms going slack | **yes** | regen — see accuracy note |
-| 07 | First Float | 0:30–1:00 | Face at rest, water line at the ears | **yes** | to do |
+| 07 | First Float | 0:30–1:00 | Face at rest, water line at the ears | **yes** | client footage |
 | 08 | Wallas | 1:00–1:45 | Waveform graphic: fast chatter smoothing out | – | done (fal) |
 | 09 | Wallas | 1:00–1:45 | Film study in a dark room, screen light on the face | – | done (fal) |
-| 10 | Wallas | 1:00–1:45 | Floating weightless, eyes closed | **yes** | to do |
+| 10 | Wallas | 1:00–1:45 | Floating weightless, eyes closed | **yes** | client footage |
+| 10b | Wallas | 1:00–1:45 | Route lines resolving, one route igniting — Illumination | – | done (fal) |
 | 11 | Wallas | 1:00–1:45 | The clean rep executed on the field | – | to do |
-| 12 | Recovery | 1:45–2:30 | Spine and joint overlay, pressure points easing | **yes** | to do |
-| 13 | Recovery | 1:45–2:30 | Shoulders and knees close, one slow exhale | **yes** | to do |
-| 14 | Recovery | 1:45–2:30 | Back to stillness, weightless suspension | **yes** | to do |
-| 15 | Conclusion | 2:30–3:00 | Stepping out, towel, steam, light on skin | **yes** | to do |
+| 12 | Recovery | 1:45–2:30 | Spine and joint overlay, pressure points easing | **yes** | client footage |
+| 13 | Recovery | 1:45–2:30 | Shoulders and knees close, one slow exhale | **yes** | client footage |
+| 14 | Recovery | 1:45–2:30 | Back to stillness, weightless suspension | **yes** | client footage |
+| 15 | Conclusion | 2:30–3:00 | Stepping out, towel, steam, light on skin | **yes** | client footage |
 | 16 | Conclusion | 2:30–3:00 | Walking toward the field, gear in hand | – | to do |
 
 Shots 01–04 complete section 1 at 32s against its 30s slide budget. Shot 05 opens section 2.
@@ -211,6 +212,7 @@ match. Generated on Higgsfield; shot 01 on `minimax_h3`, the rest on `minimax_h3
 | 06 | https://v3b.fal.media/files/b/0aaa58ed/J5VNoKkaM4NHiQ3UeoSto_minimax-h3.mp4 |
 | 08 | https://v3b.fal.media/files/b/0aaa5a0f/uhhPDotbRPHLla4w_kgn1_minimax-h3.mp4 |
 | 09 | https://v3b.fal.media/files/b/0aaa5a0f/PyTY04nZYino2mE6Hgwvs_minimax-h3.mp4 |
+| 10b | https://v3b.fal.media/files/b/0aaa5ad9/VHyECU-v75lFXWpMkaeXd_minimax-h3.mp4 |
 
 Shots 08 and 09 were generated text-to-video (no start image). At 768P with `aspect_ratio`
 `16:9` the output canvas is **1344x768** — identical to both the Higgsfield shots and the
@@ -228,6 +230,20 @@ falls on the athlete avoids the model inventing garbled playbook footage on a vi
 
 **Shot 08 prompt, as sent:**
 > Cinematic 16:9 abstract motion graphic on a near-black background. A single luminous cyan line stretches across the frame as a waveform, oscillating fast and jagged and erratic at first, then progressively slowing and smoothing into long, calm, rolling waves that glide gently across frame. Soft glow and faint bloom around the line, a deep blue-black gradient behind it, fine motes of light drifting in the dark. Camera pushes in very slowly. Clean, clinical, premium. No text on screen, no numbers, no labels, no grid lines, no graph axes, no user interface, no logos, no people. Photoreal render, shallow depth of field.
+
+**Shot 10b — Illumination.** The narration lists four Wallas stages but the shot list only covered
+three; Illumination ("sudden breakthroughs in tactical clarity") had no shot and was being carried by
+the cut from 10 to 11. 10b fills it, numbered 10b rather than inserted as a new 11 so that shots 11-16
+keep their numbers and every existing reference stays valid.
+
+It is built to rhyme with shot 08 — same near-black field, same cyan, same slow push — so the section's
+two abstract shots read as one idea. **Caveat: the resolved state reads as generic abstract light-trail
+motion graphics, not specifically football.** It works under the narration as a clarity beat; it does not
+read as "the routes from his playbook." For that football read, go image-to-video from a frame of the
+playbook footage and have the drawn page ignite, rather than generating abstract from text.
+
+**Shot 10b prompt, as sent:**
+> Cinematic 16:9 abstract motion graphic on a near-black background. Faint scattered chalk-white marks and short curving route lines drift loose and disconnected across a dark field, slightly out of alignment, like a play that has not yet resolved. Then they glide into place and lock together, and a single route line ignites in luminous cyan and traces cleanly and decisively through the formation from one end to the other, light blooming outward along its path, the remaining marks glowing softly in its wake. Fine motes of light drifting in the dark, a deep blue-black gradient behind. Camera pushes in very slowly. The feeling is sudden clarity — scattered, then resolved. Clean, clinical, premium. No text on screen, no numbers, no letters, no labels, no grid lines, no graph axes, no user interface, no logos, no people. Photoreal render, shallow depth of field.
 
 **Shot 09 prompt, as sent:**
 > Cinematic 16:9 sports documentary b-roll. A young African American college football player sits alone in a dark film room studying game footage, the flickering blue-white glow of the screen raking across one side of his face while the rest falls into deep shadow. He watches intently, still and focused, eyes tracking the play, jaw set. The monitor itself stays out of frame behind the camera, so only its shifting light falls on him. Near-black surroundings, hard cold screen light against warm skin, rich contrast. Camera close on his face at a slight angle, locked with a subtle handheld drift. Quiet concentration, full speed, no slow motion. No text on screen, no logos, no dialogue. Photoreal, 35mm, shallow depth of field.
