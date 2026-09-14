@@ -98,7 +98,7 @@ finishing above 768p, shot 01 is already fine and shots 02–05 are the ones to 
 | 11 | Wallas | 1:00–1:45 | Helmet on in the tunnel, runs out onto the floodlit field | – | done (fal) |
 | 12 | Recovery | 1:45–2:30 | Anatomical overlay: tension points cooling, pressure easing | – | done (fal) |
 | 13 | Recovery | 1:45–2:30 | Shoulders and knees close, one slow exhale | **yes** | done (fal, 15s) |
-| 14 | Recovery | 1:45–2:30 | Back to stillness, weightless suspension | **yes** | client footage |
+| 14 | Recovery | 1:45–2:30 | Back to stillness, weightless suspension | **yes** | done (fal, 15s) — reads as a tiled pool |
 | 15 | Conclusion | 2:30–3:00 | Stepping out, towel, steam, light on skin | **yes** | client footage |
 | 16 | Conclusion | 2:30–3:00 | Walking toward the field, gear in hand | – | to do |
 
@@ -216,6 +216,7 @@ match. Generated on Higgsfield; shot 01 on `minimax_h3`, the rest on `minimax_h3
 | 11 | https://v3b.fal.media/files/b/0aaa5b84/myz3JiUAsGY5bWPsnEc3R_minimax-h3.mp4 |
 | 12 | https://v3b.fal.media/files/b/0aaa5d97/sH94d3Udfi7BxE9Fah2zj_minimax-h3.mp4 |
 | 13 | https://v3b.fal.media/files/b/0aaa5dca/cykFxqPx38X-Esczn3sal_minimax-h3.mp4 |
+| 14 | https://v3b.fal.media/files/b/0aaa5dd9/Wb99BRrf9E_AD3lFAszs0_minimax-h3.mp4 |
 
 Shots 08 and 09 were generated text-to-video (no start image). At 768P with `aspect_ratio`
 `16:9` the output canvas is **1344x768** — identical to both the Higgsfield shots and the
@@ -233,6 +234,19 @@ falls on the athlete avoids the model inventing garbled playbook footage on a vi
 
 **Shot 08 prompt, as sent:**
 > Cinematic 16:9 abstract motion graphic on a near-black background. A single luminous cyan line stretches across the frame as a waveform, oscillating fast and jagged and erratic at first, then progressively slowing and smoothing into long, calm, rolling waves that glide gently across frame. Soft glow and faint bloom around the line, a deep blue-black gradient behind it, fine motes of light drifting in the dark. Camera pushes in very slowly. Clean, clinical, premium. No text on screen, no numbers, no labels, no grid lines, no graph axes, no user interface, no logos, no people. Photoreal render, shallow depth of field.
+
+**State wardrobe on every shot of a person in water.** Shot 14 was generated once with no wardrobe
+named and came back fully nude — real float therapy is usually done nude, so that is where the model
+goes by default, and the result was unusable for a client promo. Naming *plain dark navy swim shorts*
+fixed it, and framing from the chest up is worth adding as a second line of defence rather than relying
+on the wardrobe instruction alone to hold for fifteen seconds.
+
+**The "no swimming pool" negative failed the same way the logo negatives did.** Shot 14's final take
+has correct flotation, wardrobe and a single subject, but rendered a tiled pool floor and pool coping
+despite *no swimming pool* being barred by name. The general rule now has three confirmed instances
+(brand marks, extra people, wrong setting): **a negative does not beat a strong visual prior — describe
+what should be there instead.** For a tank, that means positively describing the enclosure: close dark
+walls just out of the light, a low ceiling above, no floor visible, water running to the edge of frame.
 
 **Generating tank shots after all: frame tight and get the flotation right.** Shot 13 is the first
 generated tank shot that is actually accurate, and it works because the framing excludes the pod
