@@ -89,7 +89,7 @@ finishing above 768p, shot 01 is already fine and shots 02–05 are the ones to 
 | 03 | Introduction | 0:00–0:30 | The turn: still water, one slow ripple | – | done |
 | 04 | Introduction | 0:00–0:30 | Float room at rest, lid open, cyan-lit water, empty | **yes** | done |
 | 05 | First Float | 0:30–1:00 | Athlete enters the room, towel over shoulder | **yes** | done |
-| 06 | First Float | 0:30–1:00 | Easing back into the salt water, arms going slack | **yes** | done (fal) |
+| 06 | First Float | 0:30–1:00 | Easing back into the salt water, arms going slack | **yes** | regen — see accuracy note |
 | 07 | First Float | 0:30–1:00 | Face at rest, water line at the ears | **yes** | to do |
 | 08 | Wallas | 1:00–1:45 | Waveform graphic: fast chatter smoothing out | – | to do |
 | 09 | Wallas | 1:00–1:45 | Film study in a dark room, screen light on the face | – | to do |
@@ -128,6 +128,46 @@ candles stay identical to the opening frame") rather than re-describing it from 
 AI-generated look reference, so they are internally consistent but will not match the real
 float room. If real photographs of the room exist, use one as the chain's first frame
 instead of shot 04.
+
+### Reference accuracy — checked against real float tanks (2026-09-14)
+
+Compared shots 04–06 against manufacturer photography of real commercial units (Dreampod V2,
+i-sopod). **The tank shots are cosmetically plausible but get the product wrong in ways a float
+customer would notice.** Ranked by how much they matter:
+
+1. **The flotation is wrong, and it is the whole point.** Real tanks hold only **10–12 inches**
+   of water carrying 800–1,200 lb of Epsom salt, so the floater rides *on the surface* — chest,
+   hips and face above the waterline, hair fanned out on top, arms drifting at the sides. Our
+   footage shows the athlete **sitting in deep water up to his chest**, which reads as a hot tub.
+   The promo is selling effortless zero-gravity and is currently not showing it.
+2. **The interior is a tub, not a pod.** Real interiors are one seamless white moulding, smoothly
+   curved, no rim or ledge. Ours has a rectangular basin with a ledge around it.
+3. **Missing gas struts.** Every real pod holds its lid up on two visible metal gas struts. Ours
+   has none, so the lid floats unsupported.
+4. **Pod proportions.** Real pods are low and wide — a shallow domed lid on an egg body. Our lid
+   is oversized and flat relative to the body.
+5. **Room.** A real float room is clinical and contains **a shower** (you must rinse off the salt
+   immediately), with lighting on a PIR sensor that goes dark once you are in the pod. Ours is
+   spa-styled with travertine, bamboo and open candles — candles in particular are not something
+   a float centre puts next to a tank. This is the most defensible deviation, since it is an
+   aspirational promo, but there is no shower anywhere in frame.
+
+What we already get right: the cyan/blue interior LED is accurate (real pods run colour-therapy
+LEDs), the white clamshell pod is the correct product category, and swimwear is normal at
+commercial centres — both reference photos show floaters in swimsuits.
+
+**Fix for the remaining tank shots (07, 10, 12, 13, 14, 15):** write the water depth and body
+position into the prompt explicitly — *shallow salt water only a few inches deep, the athlete
+floating high on the surface, chest and face above the waterline, arms drifting slack at his
+sides, seamless white pod interior, two slim gas struts holding the lid open.* Shot 06 should be
+regenerated on the same wording before it is used, since it seeds the rest of the chain.
+
+**Do not seed generation from manufacturer photos.** The reference images are Dreampod's
+copyrighted marketing photography — fine for checking our work, not fine as a start frame for a
+commercial promo. A photograph of the client's own float room is the correct chain seed.
+
+Sources: <https://dream-pod.com/shop-all/float-tanks/v2-float-pod/>,
+<https://www.i-sopod.com/i-sopod/>, <https://en.wikipedia.org/wiki/Isolation_tank>
 
 ### Verbatim prompts, shots 01–05
 
