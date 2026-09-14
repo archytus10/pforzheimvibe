@@ -91,8 +91,8 @@ finishing above 768p, shot 01 is already fine and shots 02–05 are the ones to 
 | 05 | First Float | 0:30–1:00 | Athlete enters the room, towel over shoulder | **yes** | done |
 | 06 | First Float | 0:30–1:00 | Easing back into the salt water, arms going slack | **yes** | regen — see accuracy note |
 | 07 | First Float | 0:30–1:00 | Face at rest, water line at the ears | **yes** | to do |
-| 08 | Wallas | 1:00–1:45 | Waveform graphic: fast chatter smoothing out | – | to do |
-| 09 | Wallas | 1:00–1:45 | Film study in a dark room, screen light on the face | – | to do |
+| 08 | Wallas | 1:00–1:45 | Waveform graphic: fast chatter smoothing out | – | done (fal) |
+| 09 | Wallas | 1:00–1:45 | Film study in a dark room, screen light on the face | – | done (fal) |
 | 10 | Wallas | 1:00–1:45 | Floating weightless, eyes closed | **yes** | to do |
 | 11 | Wallas | 1:00–1:45 | The clean rep executed on the field | – | to do |
 | 12 | Recovery | 1:45–2:30 | Spine and joint overlay, pressure points easing | **yes** | to do |
@@ -123,6 +123,13 @@ To extract the frame: `ffmpeg -sseof -0.15 -i <prev>.mp4 -frames:v 1 -q:v 2 last
 then pass it as the generator's start image. Word the prompt to hold the established room
 ("this exact float room and this exact white pod ... lighting, pod shape, wall stone and
 candles stay identical to the opening frame") rather than re-describing it from scratch.
+
+**SUPERSEDED: the client is supplying real tank footage.** Every tank interior shot (04, 05,
+06, 07, 10, 12, 13, 14, 15) is to be cut from the client's own footage of their facility —
+Stasis Float Center, Syracuse NY, who run Escape-style tanks, not the egg pod generated here.
+Do not generate tank interiors and do not continue the start-image chain. The generated tank
+shots 04-06 and the accuracy findings below are kept only as a record of why. The note that
+follows was written before that decision:
 
 **These interiors are invented, not the user's facility.** They were built from an
 AI-generated look reference, so they are internally consistent but will not match the real
@@ -202,6 +209,28 @@ match. Generated on Higgsfield; shot 01 on `minimax_h3`, the rest on `minimax_h3
 | 04 | https://d8j0ntlcm91z4.cloudfront.net/user_2yAUxnXAFoiK8f5HAU8aI7XdD8t/hf_20260913_170554_f67c6d73-9585-4c8c-a149-805426aeead8.mp4 |
 | 05 | https://d8j0ntlcm91z4.cloudfront.net/user_2yAUxnXAFoiK8f5HAU8aI7XdD8t/hf_20260913_171430_153abdad-3443-4439-a04e-093c196ece6b.mp4 |
 | 06 | https://v3b.fal.media/files/b/0aaa58ed/J5VNoKkaM4NHiQ3UeoSto_minimax-h3.mp4 |
+| 08 | https://v3b.fal.media/files/b/0aaa5a0f/uhhPDotbRPHLla4w_kgn1_minimax-h3.mp4 |
+| 09 | https://v3b.fal.media/files/b/0aaa5a0f/PyTY04nZYino2mE6Hgwvs_minimax-h3.mp4 |
+
+Shots 08 and 09 were generated text-to-video (no start image). At 768P with `aspect_ratio`
+`16:9` the output canvas is **1344x768** — identical to both the Higgsfield shots and the
+image-chained fal shots, so text-to-video and image-to-video intercut without conversion.
+
+**Shot 08 caveat:** the render settles almost immediately into the calm Alpha/Theta waveform and
+barely shows the fast, jagged opening the script asks for. Usable if it is cut into after a busy
+shot; if the transition itself needs to read, regenerate with the chaotic half weighted much
+harder in the prompt.
+
+Two wording choices worth reusing. For 08, an explicit pile of negatives — no numbers, labels,
+grid lines, graph axes or UI — kept the waveform from rendering as a medical readout with
+invented text. For 09, putting the monitor *out of frame behind the camera* so only its light
+falls on the athlete avoids the model inventing garbled playbook footage on a visible screen.
+
+**Shot 08 prompt, as sent:**
+> Cinematic 16:9 abstract motion graphic on a near-black background. A single luminous cyan line stretches across the frame as a waveform, oscillating fast and jagged and erratic at first, then progressively slowing and smoothing into long, calm, rolling waves that glide gently across frame. Soft glow and faint bloom around the line, a deep blue-black gradient behind it, fine motes of light drifting in the dark. Camera pushes in very slowly. Clean, clinical, premium. No text on screen, no numbers, no labels, no grid lines, no graph axes, no user interface, no logos, no people. Photoreal render, shallow depth of field.
+
+**Shot 09 prompt, as sent:**
+> Cinematic 16:9 sports documentary b-roll. A young African American college football player sits alone in a dark film room studying game footage, the flickering blue-white glow of the screen raking across one side of his face while the rest falls into deep shadow. He watches intently, still and focused, eyes tracking the play, jaw set. The monitor itself stays out of frame behind the camera, so only its shifting light falls on him. Near-black surroundings, hard cold screen light against warm skin, rich contrast. Camera close on his face at a slight angle, locked with a subtle handheld drift. Quiet concentration, full speed, no slow motion. No text on screen, no logos, no dialogue. Photoreal, 35mm, shallow depth of field.
 
 ### Generating on fal.ai — verified contract
 
