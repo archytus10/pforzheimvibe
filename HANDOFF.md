@@ -29,8 +29,15 @@ becomes reachable. They want to switch video generation from Higgsfield to
 **fal.ai `minimax/h3-max-turbo/text-to-video`**
 (https://fal.ai/models/minimax/h3-max-turbo/text-to-video).
 
-- Endpoint: `https://queue.fal.run/fal-ai/minimax/h3-max-turbo/text-to-video`,
-  `Authorization: Key <key>`.
+- **Endpoint — the `fal-ai/` prefix is wrong and was costing time.** The real model ID has no
+  vendor prefix: `minimax/h3-max-turbo/image-to-video` (or `/text-to-video`), so the queue URL
+  is `https://queue.fal.run/minimax/h3-max-turbo/image-to-video`, `Authorization: Key <key>`.
+  A request to the `fal-ai/...` path does **not** fail loudly — it returns `IN_QUEUE`, then
+  "completes" in ~0.1s with `{"detail":"Path ... not found"}` in the result body. It looks like
+  a working call that generated nothing. Verified 2026-09-14.
+- **Use `image-to-video`, not `text-to-video`, for the tank shots.** Nine of the sixteen shots
+  chain off the previous frame, and only the image-to-video route accepts `image_url`. The
+  handoff previously named text-to-video, which has no image input at all.
 - **Reachability depends on when your container was provisioned.** A container created
   after the user set Network access to **Full** reaches fal (it answers 401 for missing
   auth, which is fal talking, not the proxy). A container created before it still gets

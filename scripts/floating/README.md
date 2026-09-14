@@ -89,7 +89,7 @@ finishing above 768p, shot 01 is already fine and shots 02–05 are the ones to 
 | 03 | Introduction | 0:00–0:30 | The turn: still water, one slow ripple | – | done |
 | 04 | Introduction | 0:00–0:30 | Float room at rest, lid open, cyan-lit water, empty | **yes** | done |
 | 05 | First Float | 0:30–1:00 | Athlete enters the room, towel over shoulder | **yes** | done |
-| 06 | First Float | 0:30–1:00 | Easing back into the salt water, arms going slack | **yes** | to do |
+| 06 | First Float | 0:30–1:00 | Easing back into the salt water, arms going slack | **yes** | done (fal) |
 | 07 | First Float | 0:30–1:00 | Face at rest, water line at the ears | **yes** | to do |
 | 08 | Wallas | 1:00–1:45 | Waveform graphic: fast chatter smoothing out | – | to do |
 | 09 | Wallas | 1:00–1:45 | Film study in a dark room, screen light on the face | – | to do |
@@ -161,6 +161,33 @@ match. Generated on Higgsfield; shot 01 on `minimax_h3`, the rest on `minimax_h3
 | 03 | https://d8j0ntlcm91z4.cloudfront.net/user_2yAUxnXAFoiK8f5HAU8aI7XdD8t/hf_20260913_165920_cbd39643-69a1-438a-894e-dac57fc5604b.mp4 |
 | 04 | https://d8j0ntlcm91z4.cloudfront.net/user_2yAUxnXAFoiK8f5HAU8aI7XdD8t/hf_20260913_170554_f67c6d73-9585-4c8c-a149-805426aeead8.mp4 |
 | 05 | https://d8j0ntlcm91z4.cloudfront.net/user_2yAUxnXAFoiK8f5HAU8aI7XdD8t/hf_20260913_171430_153abdad-3443-4439-a04e-093c196ece6b.mp4 |
+| 06 | https://v3b.fal.media/files/b/0aaa58ed/J5VNoKkaM4NHiQ3UeoSto_minimax-h3.mp4 |
+
+### Generating on fal.ai — verified contract
+
+Shots 01–05 were made on Higgsfield; shot 06 onward are on fal. fal output is **1344x768, 8.00s,
+24 fps** — byte-for-byte the same spec as the Higgsfield clips, so the two intercut cleanly.
+
+- Queue URL: `https://queue.fal.run/minimax/h3-max-turbo/image-to-video`, header
+  `Authorization: Key <key>`. **No `fal-ai/` prefix** — that path returns a silent 404 that
+  presents as a job completing instantly with nothing rendered.
+- Tank shots use `image-to-video` with `image_url` set to the previous tank shot's last frame.
+  Non-tank shots (08, 09, 11, 16) use `/text-to-video` and omit the image.
+- Required body fields: `prompt` and `prompt_expansion_mode`. Also send `duration: 8`,
+  `resolution: "768P"`. Aspect follows the start image, so the chain self-maintains 1344x768.
+- Upload a start frame by POSTing `{"content_type":"image/jpeg","file_name":"x.jpg"}` to
+  `https://rest.alpha.fal.ai/storage/upload/initiate?storage_type=fal-cdn-v3`, then PUT the
+  bytes to the returned `upload_url`; pass the returned `file_url` as `image_url`.
+- **`prompt_expansion_mode` cannot be turned off** — only `balanced` (~1s) or `quality` (~30s).
+  fal rewrites the prompt before generation and returns the rewrite as `expanded_prompt`.
+  On shot 06 `balanced` preserved the continuity wording, expanding "stay identical to the
+  opening frame" into an explicit reference to the start frame. Read `expanded_prompt` on every
+  chained shot — a rewrite that drops the continuity clause is what breaks the room.
+- Cost at 768p is per-second of output, so an 8s shot is cents. Promotional pricing was noted as
+  ending 2026-09-14; check fal's pricing page before assuming the cheap rate.
+
+**Shot 06 prompt, as sent:**
+> The camera holds on this exact float room and this exact white pod. The same young African American college football athlete lowers himself backward into the shallow salt water inside the pod and settles onto his back, floating, arms drifting out from his sides and going slack, shoulders and neck releasing as the water takes his weight. Lighting, pod shape, wall stone, bamboo and candles stay identical to the opening frame. Slow, unhurried, weightless. No text on screen, no logos, no dialogue. Photoreal, 35mm, shallow depth of field.
 
 ## NOTES BEFORE PRODUCTION
 
