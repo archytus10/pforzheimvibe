@@ -95,7 +95,7 @@ finishing above 768p, shot 01 is already fine and shots 02–05 are the ones to 
 | 09 | Wallas | 1:00–1:45 | Film study in a dark room, screen light on the face | – | done (fal) |
 | 10 | Wallas | 1:00–1:45 | Floating weightless, eyes closed | **yes** | client footage |
 | 10b | Wallas | 1:00–1:45 | Route lines resolving, one route igniting — Illumination | – | done (fal) |
-| 11 | Wallas | 1:00–1:45 | The clean rep executed on the field | – | to do |
+| 11 | Wallas | 1:00–1:45 | Helmet on in the tunnel, runs out onto the floodlit field | – | done (fal) |
 | 12 | Recovery | 1:45–2:30 | Spine and joint overlay, pressure points easing | **yes** | client footage |
 | 13 | Recovery | 1:45–2:30 | Shoulders and knees close, one slow exhale | **yes** | client footage |
 | 14 | Recovery | 1:45–2:30 | Back to stillness, weightless suspension | **yes** | client footage |
@@ -213,6 +213,7 @@ match. Generated on Higgsfield; shot 01 on `minimax_h3`, the rest on `minimax_h3
 | 08 | https://v3b.fal.media/files/b/0aaa5a0f/uhhPDotbRPHLla4w_kgn1_minimax-h3.mp4 |
 | 09 | https://v3b.fal.media/files/b/0aaa5a0f/PyTY04nZYino2mE6Hgwvs_minimax-h3.mp4 |
 | 10b | https://v3b.fal.media/files/b/0aaa5ad9/VHyECU-v75lFXWpMkaeXd_minimax-h3.mp4 |
+| 11 | https://v3b.fal.media/files/b/0aaa5b84/myz3JiUAsGY5bWPsnEc3R_minimax-h3.mp4 |
 
 Shots 08 and 09 were generated text-to-video (no start image). At 768P with `aspect_ratio`
 `16:9` the output canvas is **1344x768** — identical to both the Higgsfield shots and the
@@ -230,6 +231,36 @@ falls on the athlete avoids the model inventing garbled playbook footage on a vi
 
 **Shot 08 prompt, as sent:**
 > Cinematic 16:9 abstract motion graphic on a near-black background. A single luminous cyan line stretches across the frame as a waveform, oscillating fast and jagged and erratic at first, then progressively slowing and smoothing into long, calm, rolling waves that glide gently across frame. Soft glow and faint bloom around the line, a deep blue-black gradient behind it, fine motes of light drifting in the dark. Camera pushes in very slowly. Clean, clinical, premium. No text on screen, no numbers, no labels, no grid lines, no graph axes, no user interface, no logos, no people. Photoreal render, shallow depth of field.
+
+### Branding on uniforms — negative prompts do not work
+
+This cost four renders, so do not rediscover it. **Telling the model what NOT to render does not
+suppress brand marks on sportswear.** Three escalating attempts all failed: "no logos" produced a
+swoosh on a jersey; a detailed ban naming swooshes, wordmarks and trademarks across jerseys,
+helmets, gloves and field produced swooshes on jersey, trousers and a teammate's shoulder plus a
+mascot on the helmet; the branding got *worse* the more convincingly game-like the shot became.
+Football imagery in the training data is saturated with these marks, so a negative competes against
+an overwhelming prior and loses.
+
+**What works is describing the blankness positively**, as the thing to render:
+
+> a solid slate-grey jersey carrying one large bold white number 7 on the chest and the same number
+> 7 on the back, in simple block numerals — that number is the only marking on the jersey, the rest
+> of the fabric completely bare. A plain matte helmet with a smooth bare shell, no decals and no
+> markings of any kind ... Apart from the number 7, every surface is blank, neutral and unbranded.
+
+That produced a completely clean uniform. Two supporting rules learned alongside it:
+
+- **Name the one marking you DO want.** An all-negative "blank" description also suppressed the
+  jersey number, which is not a trademark and was wanted. Allow it explicitly.
+- **Prefer a single digit.** Numbers are text and text is where this model garbles; one glyph came
+  back clean where two digits are a coin flip.
+- **Fewer people in frame means fewer surfaces to brand.** When a teammate appeared, the logo landed
+  on him even though the main subject was clean.
+
+Apply this wording to any remaining shot with clothing or equipment in it. Shots 01 and 02 were
+generated on Higgsfield before this was understood and have **not** been re-checked for brand marks
+— do that before they go in the cut.
 
 **Shot 10b — Illumination.** The narration lists four Wallas stages but the shot list only covered
 three; Illumination ("sudden breakthroughs in tactical clarity") had no shot and was being carried by
