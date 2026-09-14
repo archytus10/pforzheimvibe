@@ -96,7 +96,7 @@ finishing above 768p, shot 01 is already fine and shots 02–05 are the ones to 
 | 10 | Wallas | 1:00–1:45 | Floating weightless, eyes closed | **yes** | client footage |
 | 10b | Wallas | 1:00–1:45 | Route lines resolving, one route igniting — Illumination | – | done (fal) |
 | 11 | Wallas | 1:00–1:45 | Helmet on in the tunnel, runs out onto the floodlit field | – | done (fal) |
-| 12 | Recovery | 1:45–2:30 | Spine and joint overlay, pressure points easing | **yes** | client footage |
+| 12 | Recovery | 1:45–2:30 | Anatomical overlay: tension points cooling, pressure easing | – | done (fal) |
 | 13 | Recovery | 1:45–2:30 | Shoulders and knees close, one slow exhale | **yes** | client footage |
 | 14 | Recovery | 1:45–2:30 | Back to stillness, weightless suspension | **yes** | client footage |
 | 15 | Conclusion | 2:30–3:00 | Stepping out, towel, steam, light on skin | **yes** | client footage |
@@ -214,6 +214,7 @@ match. Generated on Higgsfield; shot 01 on `minimax_h3`, the rest on `minimax_h3
 | 09 | https://v3b.fal.media/files/b/0aaa5a0f/PyTY04nZYino2mE6Hgwvs_minimax-h3.mp4 |
 | 10b | https://v3b.fal.media/files/b/0aaa5ad9/VHyECU-v75lFXWpMkaeXd_minimax-h3.mp4 |
 | 11 | https://v3b.fal.media/files/b/0aaa5b84/myz3JiUAsGY5bWPsnEc3R_minimax-h3.mp4 |
+| 12 | https://v3b.fal.media/files/b/0aaa5d97/sH94d3Udfi7BxE9Fah2zj_minimax-h3.mp4 |
 
 Shots 08 and 09 were generated text-to-video (no start image). At 768P with `aspect_ratio`
 `16:9` the output canvas is **1344x768** — identical to both the Higgsfield shots and the
@@ -231,6 +232,22 @@ falls on the athlete avoids the model inventing garbled playbook footage on a vi
 
 **Shot 08 prompt, as sent:**
 > Cinematic 16:9 abstract motion graphic on a near-black background. A single luminous cyan line stretches across the frame as a waveform, oscillating fast and jagged and erratic at first, then progressively slowing and smoothing into long, calm, rolling waves that glide gently across frame. Soft glow and faint bloom around the line, a deep blue-black gradient behind it, fine motes of light drifting in the dark. Camera pushes in very slowly. Clean, clinical, premium. No text on screen, no numbers, no labels, no grid lines, no graph axes, no user interface, no logos, no people. Photoreal render, shallow depth of field.
+
+**Shot 12 is a graphic, not a tank shot.** It was marked tank/client footage, but the script's own
+direction for this beat is "muscle recovery animations, glowing pressure-relief points" — an overlay,
+not pod footage. Generated as a standalone anatomical graphic it can be cut in straight or composited
+over the client's tank footage, and it avoids the float-tank accuracy problem entirely since no pod or
+water appears.
+
+The mechanism that makes it work is the **colour arc**: tension points burn hot amber-orange at the
+lower back, shoulders and hips, then cool one by one to calm cyan. Without the warm start there is
+nothing to release and it reads as decoration rather than relief. Two things came back better than
+specified and should be kept — the figure floats horizontally and supine, so it reads as being in the
+tank without showing one, and it rendered as a full translucent body rather than a bare spine, which is
+warmer and less clinical.
+
+**Shot 12 prompt, as sent:**
+> Cinematic 16:9 abstract anatomical motion graphic on a near-black background. A luminous translucent human spine and the major joints float in dark space, seen in profile, rendered as soft glowing volumetric light rather than a flat medical diagram. Points of compressed tension burn hot amber-orange at the lower back, the shoulders and the knees; one by one each point slowly cools and softens through to a calm luminous cyan, the glow spreading and easing outward as the pressure releases, the whole form settling and relaxing. Fine motes of light drifting in the dark, a deep blue-black gradient behind. Camera drifts slowly along the length of the spine. Clean, clinical, premium, weightless. No text on screen, no numbers, no letters, no labels, no callout lines or leader lines, no grid, no user interface, no logos, no faces, no people. Photoreal volumetric render, shallow depth of field.
 
 ### Branding on uniforms — negative prompts do not work
 
