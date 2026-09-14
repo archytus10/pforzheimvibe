@@ -97,7 +97,7 @@ finishing above 768p, shot 01 is already fine and shots 02–05 are the ones to 
 | 10b | Wallas | 1:00–1:45 | Route lines resolving, one route igniting — Illumination | – | done (fal) |
 | 11 | Wallas | 1:00–1:45 | Helmet on in the tunnel, runs out onto the floodlit field | – | done (fal) |
 | 12 | Recovery | 1:45–2:30 | Anatomical overlay: tension points cooling, pressure easing | – | done (fal) |
-| 13 | Recovery | 1:45–2:30 | Shoulders and knees close, one slow exhale | **yes** | client footage |
+| 13 | Recovery | 1:45–2:30 | Shoulders and knees close, one slow exhale | **yes** | done (fal, 15s) |
 | 14 | Recovery | 1:45–2:30 | Back to stillness, weightless suspension | **yes** | client footage |
 | 15 | Conclusion | 2:30–3:00 | Stepping out, towel, steam, light on skin | **yes** | client footage |
 | 16 | Conclusion | 2:30–3:00 | Walking toward the field, gear in hand | – | to do |
@@ -215,6 +215,7 @@ match. Generated on Higgsfield; shot 01 on `minimax_h3`, the rest on `minimax_h3
 | 10b | https://v3b.fal.media/files/b/0aaa5ad9/VHyECU-v75lFXWpMkaeXd_minimax-h3.mp4 |
 | 11 | https://v3b.fal.media/files/b/0aaa5b84/myz3JiUAsGY5bWPsnEc3R_minimax-h3.mp4 |
 | 12 | https://v3b.fal.media/files/b/0aaa5d97/sH94d3Udfi7BxE9Fah2zj_minimax-h3.mp4 |
+| 13 | https://v3b.fal.media/files/b/0aaa5dca/cykFxqPx38X-Esczn3sal_minimax-h3.mp4 |
 
 Shots 08 and 09 were generated text-to-video (no start image). At 768P with `aspect_ratio`
 `16:9` the output canvas is **1344x768** — identical to both the Higgsfield shots and the
@@ -232,6 +233,23 @@ falls on the athlete avoids the model inventing garbled playbook footage on a vi
 
 **Shot 08 prompt, as sent:**
 > Cinematic 16:9 abstract motion graphic on a near-black background. A single luminous cyan line stretches across the frame as a waveform, oscillating fast and jagged and erratic at first, then progressively slowing and smoothing into long, calm, rolling waves that glide gently across frame. Soft glow and faint bloom around the line, a deep blue-black gradient behind it, fine motes of light drifting in the dark. Camera pushes in very slowly. Clean, clinical, premium. No text on screen, no numbers, no labels, no grid lines, no graph axes, no user interface, no logos, no people. Photoreal render, shallow depth of field.
+
+**Generating tank shots after all: frame tight and get the flotation right.** Shot 13 is the first
+generated tank shot that is actually accurate, and it works because the framing excludes the pod
+entirely — only skin, waterline and darkness, with the pod, lid, struts and room explicitly barred from
+frame. That removes every accuracy problem catalogued above at a stroke, because none of the offending
+geometry is visible. The flotation itself is stated explicitly in the prompt: *the water is only a few
+inches deep and so heavy with salt that his body rides high on the surface — shoulders, chest and knees
+break the waterline, the rest just beneath.* That single sentence is what fixes the hot-tub look.
+Reuse it verbatim for any shot of a person in the water.
+
+**Near-static shots need a subject count and something to do.** Shot 14 was first attempted as
+"floats motionless ... nothing happens" over 15s and failed badly: the model filled the empty time by
+inventing a second person, producing two heads on merged, garbled anatomy, and drifted the setting to a
+bright outdoor swimming pool. Two rules came out of it — say **one man alone, the only person in frame,
+nobody else present**, and give even a still shot one small real motion (breathing, a fraction of drift)
+rather than declaring that nothing happens. Also bar the wrong settings by name: no swimming pool, no
+daylight, no sky, no plants. Long durations make both failures more likely, not less.
 
 **Shot 12 is a graphic, not a tank shot.** It was marked tank/client footage, but the script's own
 direction for this beat is "muscle recovery animations, glowing pressure-relief points" — an overlay,
